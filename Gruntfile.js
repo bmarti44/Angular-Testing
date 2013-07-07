@@ -46,8 +46,7 @@ module.exports = function (grunt) {
 			styles: {
 				src: [
 					// set CSS ordering here
-					'css/gameflash_chat.css',
-					'css/gameflash_mlb.css'
+					'css/app.css'
 				],
 				dest: 'pkg/app.concat.css'
 			}
