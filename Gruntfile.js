@@ -8,7 +8,8 @@ module.exports = function (grunt) {
 		jshint: {
 			// these are the files to lint
 			all: [
-				'js/*.js'
+				'js/*.js',
+				'spec/*.js'
 			],
 			// these are the JSHint options (more info here http://www.jshint.com/docs/)
 			options: {
@@ -122,5 +123,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');		// used for checking code quality (similar to JSLint)
 
 	// default task -> run 'grunt' -> lints script files, minifies HTML shell, replaces shell var in script, minifies JS and CSS assets for deployment
-	grunt.registerTask('default', ['jshint', 'htmlmin', 'concat', 'min', 'cssmin', 'clean', 'jasmine']);
+	grunt.registerTask('default', ['jshint', 'jasmine', 'htmlmin', 'concat', 'min', 'cssmin', 'clean']);
 };
