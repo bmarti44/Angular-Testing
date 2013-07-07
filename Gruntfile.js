@@ -46,7 +46,7 @@ module.exports = function (grunt) {
 			styles: {
 				src: [
 					// set CSS ordering here
-					'css/app.css'
+					'pkg/app.css'
 				],
 				dest: 'pkg/app.concat.css'
 			}
@@ -65,7 +65,8 @@ module.exports = function (grunt) {
 		min: {
 			js: {
 				src: 'pkg/app.concat.js',
-				dest: 'pkg/app.min.js'
+				dest: 'pkg/app.min.js',
+				nomunge: true
 			}
 		},
 		cssmin: {
@@ -77,7 +78,7 @@ module.exports = function (grunt) {
 		watch: {
 			javascript: {
 				files: ['!components/**/*.js', '!node_modules/**/*.js', 'js/*.js', '*.html', '!index.min.html'],
-				tasks: ['jshint', 'min', 'cssmin', 'htmlmin', 'clean'],
+				tasks: ['jshint', 'htmlmin', 'concat', 'min', 'cssmin', 'clean'],
 				options: {
 					livereload: true
 				}

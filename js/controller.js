@@ -4,6 +4,7 @@
 angular.module('gameflash').controller('PlayerListControl', ['$rootScope', '$scope', '$http', '$timeout', function ($rootScope, $scope, $http, $timeout) {
 	'use strict';
 	
+	
 	$rootScope.$on('gameflashData', function(event, data) {
 		console.log(data);
 		$scope.data = data;
