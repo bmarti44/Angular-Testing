@@ -102,6 +102,7 @@ module.exports = function (grunt) {
 					'components/jquery/jquery-migrate.min.js',
 					'components/angular/angular.min.js',
 					'components/angular-resource/angular-resource.min.js',
+					'components/angular-mocks/angular-mocks.js',
 					'components/**/*.min.js',
 					'js/*.js'
 				],

@@ -1,10 +1,10 @@
 /*jslint devel: false, browser: true, maxerr: 50, indent: 4*/
 /*global module: false, it: false, inject: false, expect: false, spyOn: false, beforeEach: false, $: false, describe: false, angular: false, jQuery: false, console: false, document: false, event: false, frames: false, history: false, Image: false, location: false, name: false, navigator: false, Option: false, parent: false, screen: false, setInterval: false, setTimeout: false, window: false, XMLHttpRequest: false */
 
-describe('Testing the controller for players', function() {
+describe('Player List Controller', function() {
 	'use strict';
 	var $scope = null,
-		ctrl = null,
+		controller = null,
 		mockService;
   
 	/* A mocked version of our service, someService
@@ -19,19 +19,19 @@ describe('Testing the controller for players', function() {
 	};
   
 	//you need to indicate your module in a test
-	beforeEach(angular.module('gameflash'));
+	beforeEach(module('gameflash'));
 
 	/* IMPORTANT!
 	* this is where we're setting up the $scope and
 	* calling the controller function on it, injecting
 	* all the important bits, like our mockService */
-	beforeEach(angular.injector(function($rootScope, $controller) {
+	beforeEach(inject(function($rootScope, $controller) {
 		//create a scope object for us to use.
 		$scope = $rootScope.$new();
 
 		//now run that scope through the controller function,
 		//injecting any services or other injectables we need.
-		ctrl = $controller('PlayerListControl', {
+		controller = $controller('PlayerListControl', {
 			$scope: $scope,
 			someService: mockService
 		});
@@ -41,11 +41,11 @@ describe('Testing the controller for players', function() {
 	/* Test 1: The simplest of the simple.
 	* here we're going to test that some things were 
 	* populated when the controller function whas evaluated. */
-	it('should start with foo and bar populated', function() {
+	it ('should start with foo and bar populated', function($scope) {
     
 		//just assert. $scope was set up in beforeEach() (above)
 		expect($scope.foo).toEqual('foo');
-		expect($scope.bar).toEqual('bar');
+		
 	});
   
   

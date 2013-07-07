@@ -16,4 +16,5 @@ angular.module('gameflash').controller('PlayerListControl', ['$rootScope', '$sco
 		play.description = 'non';
 	};
 	
+	$scope.foo = 'foo';
 }]);
