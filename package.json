@@ -8,6 +8,7 @@
     "grunt-yui-compressor": "0.2.1",
     "grunt-sed": "0.1.1",
     "grunt-contrib-jshint": ">=0.2.0",
-    "grunt-contrib-concat": "latest"
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-watch": "latest"
   }
 }

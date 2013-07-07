@@ -73,10 +73,20 @@ module.exports = function (grunt) {
 				src: 'pkg/app.concat.css',
 				dest: 'pkg/app.min.css'
 			}
+		},
+		watch: {
+			javascript: {
+				files: ['!components/**/*.js', '!node_modules/**/*.js', 'js/*.js', '*.html', '!index.min.html'],
+				tasks: ['jshint', 'min', 'cssmin', 'htmlmin'],
+				options: {
+					livereload: true
+				}
+			}
 		}
 	});
 
 	// Grunt tasks that this project depends on
+	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-yui-compressor');		// provides 'min' and 'cssmin' tasks
 	grunt.loadNpmTasks('grunt-contrib-htmlmin');
