@@ -90,10 +90,30 @@ module.exports = function (grunt) {
 				}
 			}
 		},
-		clean: ['pkg/app.concat.css', 'pkg/app.concat.js']
+		clean: [
+			'pkg/app.concat.css', 
+			'pkg/app.concat.js'
+		],
+		jasmine: {
+			gameflash: {
+				src: [
+					'components/jquery/jquery.min.js',
+					'components/jquery/jquery-migrate.min.js',
+					'components/angular/angular.min.js',
+					'components/angular-resource/angular-resource.min.js',
+					'components/**/*.min.js',
+					'js/*.js'
+				],
+				options: {
+					specs: 'spec/*specs.js',
+					helpers: 'spec/*helpers.js'
+				}
+			}
+		}
 	});
 
 	// Grunt tasks that this project depends on
+	grunt.loadNpmTasks('grunt-contrib-jasmine');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
@@ -102,5 +122,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');		// used for checking code quality (similar to JSLint)
 
 	// default task -> run 'grunt' -> lints script files, minifies HTML shell, replaces shell var in script, minifies JS and CSS assets for deployment
-	grunt.registerTask('default', ['jshint', 'htmlmin', 'concat', 'min', 'cssmin', 'clean']);
+	grunt.registerTask('default', ['jshint', 'htmlmin', 'concat', 'min', 'cssmin', 'clean', 'jasmine']);
 };
