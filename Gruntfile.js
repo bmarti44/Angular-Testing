@@ -8,9 +8,7 @@ module.exports = function (grunt) {
 		jshint: {
 			// these are the files to lint
 			all: [
-				'js/app.js',
-				'js/service.js',
-				'js/controller.js'
+				'js/*.js'
 			],
 			// these are the JSHint options (more info here http://www.jshint.com/docs/)
 			options: {
@@ -37,16 +35,24 @@ module.exports = function (grunt) {
 		concat: {
 			scripts: {
 				src: [
-					'js/app.js',
-					'js/service.js',
-					'js/controller.js'
+					'js/*.js'
 				],
 				dest: 'pkg/app.concat.js'
 			},
+			assets: {
+				src: [
+					'components/jquery/jquery.min.js',
+					'components/jquery/jquery-migrate.min.js',
+					'components/angular/angular.min.js',
+					'components/angular-resource/angular-resource.min.js',
+					'components/**/*.min.js'
+				],
+				dest: 'pkg/assets.js'
+			},
 			styles: {
 				src: [
-					// set CSS ordering here
-					'pkg/app.css'
+					'css/app.css',
+					'css/*.css'
 				],
 				dest: 'pkg/app.concat.css'
 			}
@@ -77,7 +83,7 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			javascript: {
-				files: ['!components/**/*.js', '!node_modules/**/*.js', 'js/*.js', '*.html', '!index.min.html'],
+				files: ['!components/**/*.js', '!node_modules/**/*.js', 'js/*.js', 'css/*.css', '*.html', '!index.min.html'],
 				tasks: ['jshint', 'htmlmin', 'concat', 'min', 'cssmin', 'clean'],
 				options: {
 					livereload: true
