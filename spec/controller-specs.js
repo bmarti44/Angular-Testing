@@ -43,6 +43,7 @@ describe('gameflash', function() {
 			controller = createController();
 			
 			expect(scope.foo).toEqual('foo');
+			
 			$httpBackend.flush();
 		});
 		
@@ -52,20 +53,29 @@ describe('gameflash', function() {
 		 * Add additional controller unit tests below this unit test
 		 */
 		describe('PlayerListControl', function() {
-			var scope, controller;
+			var scope, appController, playerListController;
 			
-			beforeEach(inject(function($controller, $rootScope) {
-				
+			beforeEach(inject(function($httpBackend, $controller, $rootScope) {
+				// setup the root scope for all controllers
 				scope = $rootScope;
-				
-				controller = $controller('PlayerListControl', {
+				// modify the root scope to include everything added to AppControl
+				appController = $controller('AppControl', {
+					'$scope' : scope 
+				});
+				// flush out the $http requests
+				$httpBackend.flush();
+				// take the inherited AppControl scope and apply it to PlayerListControl's scope
+				playerListController = $controller('PlayerListControl', {
 					'$scope' : scope 
 				});
 				
 			}));
 			
 			it('checking foo property', function() {
+				// foo from the AppControl
 				expect(scope.foo).toEqual('foo');
+				// bar from the PlayerListControl
+				expect(scope.bar).toEqual('bar');
 			});
 		
 		});

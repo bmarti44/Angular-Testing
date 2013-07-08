@@ -33,5 +33,6 @@ angular.module('gameflash').controller('PlayerListControl', ['$scope', function 
 		play.description = 'non';
 	};
 	
-	$scope.foo = 'foo';
+	$scope.bar = 'bar';
+	
 }]);
