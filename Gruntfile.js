@@ -36,6 +36,7 @@ module.exports = function (grunt) {
 		concat: {
 			scripts: {
 				src: [
+					'js/AppCtrl.js',
 					'js/*.js'
 				],
 				dest: 'pkg/app.concat.js'
@@ -84,7 +85,7 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			javascript: {
-				files: ['js/*.js'],
+				files: ['js/AppInit.js', 'js/*.js'],
 				tasks: ['jshint', 'jasmine', 'concat:scripts', 'concat:assets', 'min', 'clean'],
 				options: {
 					livereload: true
