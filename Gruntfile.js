@@ -60,13 +60,15 @@ module.exports = function (grunt) {
 			}
 		},
 		htmlmin: {
-			prod: {
+			gameflash: {
 				options: {
 					removeComments: true,
-					collapseWhitespace: true
+					collapseWhitespace: true,
+					removeRedundantAttributes: true,
+					removeEmptyAttributes: true
 				},
 				files: {
-					'index.min.html': 'index.html'
+					'index.html': 'html/index.html'
 				}
 			}
 		},
@@ -99,7 +101,7 @@ module.exports = function (grunt) {
 				}
 			},
 			html: {
-				files: ['*.html', '!index.min.html', '!_SpecRunner.html'],
+				files: ['html/*.html'],
 				tasks: ['htmlmin'],
 				options: {
 					livereload: true
