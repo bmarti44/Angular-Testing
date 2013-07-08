@@ -1,0 +1,7 @@
+{
+  "name": "Angular-Testing",
+  "version": "0.0.0",
+  "dependencies": {
+    "sass-bootstrap": "~2.3.2"
+  }
+}

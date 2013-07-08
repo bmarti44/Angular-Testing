@@ -3,37 +3,28 @@
 
 describe('gameflash', function() {
 	'use strict';
-	var mockService;
-  
-	/* A mocked version of our service, someService
-	* we're mocking this so we have total control and we're
-	* testing this in isolation from any calls it might
-	* be making.
-	*/
-	mockService = {
-		someAsyncCall: function (x) {
-			return 'weee';
-		}
-	};
-  
-	//you need to indicate your module in a test
 	
-	
-	describe('PlayerListControl', function() {
-		var scope, ctrl, $httpBackend, createController, $controller;
+	/**
+	 * AppControl Unit Test
+	 * This test will hold all other controller unit tests
+	 */
+	describe('AppControl', function() {
+		var scope, ctrl, $httpBackend, createController;
 		
 		beforeEach(module('gameflash'));
 		
-		beforeEach(inject(function($injector, $rootScope, $controller) {
+		beforeEach(inject(function($injector, $rootScope) {
+			var controller;
+			
 			$httpBackend = $injector.get('$httpBackend');
 			$httpBackend.whenJSONP('http://data.sportsillustrated.cnn.com/jsonp/baseball/mlb/gameflash/2013/07/06/48732_playbyplaytvl.json?callback=JSON_CALLBACK').respond({'test': 'test'});
 			$httpBackend.whenJSONP('http://data.sportsillustrated.cnn.com/jsonp/baseball/mlb/gameflash/2013/07/06/48732_boxscore.json?callback=JSON_CALLBACK').respond({'test': 'test'});
 			scope = $rootScope;
-			$controller = $injector.get('$controller');
+			controller = $injector.get('$controller');
  
 			createController = function() {
-				return $controller('PlayerListControl', {
-					'$scope' : $rootScope 
+				return controller('AppControl', {
+					'$scope' : scope
 				});
 			};
 		}));
@@ -55,6 +46,29 @@ describe('gameflash', function() {
 			$httpBackend.flush();
 		});
 		
+		/**
+		 * PlayerListControl Unit Test
+		 * This will be a simple example unit test for the Player List Controller
+		 * Add additional controller unit tests below this unit test
+		 */
+		describe('PlayerListControl', function() {
+			var scope, controller;
+			
+			beforeEach(inject(function($controller, $rootScope) {
+				
+				scope = $rootScope;
+				
+				controller = $controller('PlayerListControl', {
+					'$scope' : scope 
+				});
+				
+			}));
+			
+			it('checking foo property', function() {
+				expect(scope.foo).toEqual('foo');
+			});
+		
+		});
 	});
   
 });
