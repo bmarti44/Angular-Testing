@@ -36,7 +36,7 @@ module.exports = function (grunt) {
 		concat: {
 			scripts: {
 				src: [
-					'js/AppCtrl.js',
+					'js/AppInit.js',
 					'js/*.js'
 				],
 				dest: 'pkg/app.concat.js'
@@ -119,7 +119,7 @@ module.exports = function (grunt) {
 					'components/angular-resource/angular-resource.min.js',
 					'components/angular-mocks/angular-mocks.js',
 					'components/**/*.min.js',
-					'js/*.js'
+					'pkg/app.min.js'
 				],
 				options: {
 					specs: 'spec/*Specs.js',
