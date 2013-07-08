@@ -1,14 +1,9 @@
 /*jslint devel: false, browser: true, maxerr: 50, indent: 4*/
-/*global module: false, it: false, inject: false, expect: false, spyOn: false, beforeEach: false, $: false, describe: false, angular: false, jQuery: false, console: false, document: false, event: false, frames: false, history: false, Image: false, location: false, name: false, navigator: false, Option: false, parent: false, screen: false, setInterval: false, setTimeout: false, window: false, XMLHttpRequest: false */
+/*global afterEach: false, module: false, it: false, inject: false, expect: false, spyOn: false, beforeEach: false, $: false, describe: false, angular: false, jQuery: false, console: false, document: false, event: false, frames: false, history: false, Image: false, location: false, name: false, navigator: false, Option: false, parent: false, screen: false, setInterval: false, setTimeout: false, window: false, XMLHttpRequest: false */
 
 describe('gameflash', function() {
 	'use strict';
-	var createController,
-		$rootScope,
-		$httpBackend,
-		$controller,
-		$scope,
-		mockService;
+	var mockService;
   
 	/* A mocked version of our service, someService
 	* we're mocking this so we have total control and we're
@@ -22,22 +17,43 @@ describe('gameflash', function() {
 	};
   
 	//you need to indicate your module in a test
-	beforeEach(module('gameflash'));
+	
 	
 	describe('PlayerListControl', function() {
-		var scope, ctrl, $httpBackend;
+		var scope, ctrl, $httpBackend, createController, $controller;
 		
-		beforeEach(inject(function($httpBackend, $rootScope, $controller) {
-			$httpBackend.expectJSONP('http://data.sportsillustrated.cnn.com/jsonp/baseball/mlb/gameflash/2013/07/06/48732_playbyplaytvl.json?callback=JSON_CALLBACK').
-				respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
-
+		beforeEach(module('gameflash'));
+		
+		beforeEach(inject(function($injector, $rootScope, $controller) {
+			$httpBackend = $injector.get('$httpBackend');
+			$httpBackend.whenJSONP('http://data.sportsillustrated.cnn.com/jsonp/baseball/mlb/gameflash/2013/07/06/48732_playbyplaytvl.json?callback=JSON_CALLBACK').respond({'test': 'test'});
+			$httpBackend.whenJSONP('http://data.sportsillustrated.cnn.com/jsonp/baseball/mlb/gameflash/2013/07/06/48732_boxscore.json?callback=JSON_CALLBACK').respond({'test': 'test'});
 			scope = $rootScope;
-			ctrl = $controller('PlayerListControl', {$scope: scope});
+			$controller = $injector.get('$controller');
+ 
+			createController = function() {
+				return $controller('PlayerListControl', {
+					'$scope' : $rootScope 
+				});
+			};
 		}));
 		
-		it('checking foo property', inject(function($scope, $rootScope, $controller) {
-			expect($scope.foo).toEqual('fasdfasdfasdfasdfoo');
-		}));
+		afterEach(function() {
+			$httpBackend.verifyNoOutstandingExpectation();
+			$httpBackend.verifyNoOutstandingRequest();
+		});
+		
+		it('checking foo property', function() {
+			var controller;
+			
+			$httpBackend.expectJSONP('http://data.sportsillustrated.cnn.com/jsonp/baseball/mlb/gameflash/2013/07/06/48732_playbyplaytvl.json?callback=JSON_CALLBACK').respond(201, '');
+			$httpBackend.expectJSONP('http://data.sportsillustrated.cnn.com/jsonp/baseball/mlb/gameflash/2013/07/06/48732_boxscore.json?callback=JSON_CALLBACK').respond(201, '');
+			
+			controller = createController();
+			
+			expect(scope.foo).toEqual('foo');
+			$httpBackend.flush();
+		});
 		
 	});
   

@@ -3,7 +3,6 @@
 
 angular.module('gameflashRequest', ['ngResource']).factory('GetData', ['$rootScope', '$http', '$q', function ($rootScope, $http, $q) {
 	'use strict';
-	
 	return {
 		'query': function() { 
 			return $q.all([
