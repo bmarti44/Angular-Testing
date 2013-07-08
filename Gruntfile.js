@@ -5,6 +5,7 @@ module.exports = function (grunt) {
 	'use strict';
 	
 	grunt.initConfig({
+		pkg: '<json:package.json>',
 		jshint: {
 			// these are the files to lint
 			all: [
