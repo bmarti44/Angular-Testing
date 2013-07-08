@@ -84,7 +84,7 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			javascript: {
-				files: ['!components/**/*.js', '!node_modules/**/*.js', 'js/*.js', 'css/*.css', '*.html', '!index.min.html'],
+				files: ['js/*.js'],
 				tasks: ['jshint', 'jasmine', 'concat:scripts', 'concat:assets', 'min', 'clean'],
 				options: {
 					livereload: true
@@ -98,7 +98,7 @@ module.exports = function (grunt) {
 				}
 			},
 			html: {
-				files: ['*.html', '!index.min.html'],
+				files: ['*.html', '!index.min.html', '!_SpecRunner.html'],
 				tasks: ['htmlmin'],
 				options: {
 					livereload: true
@@ -121,8 +121,8 @@ module.exports = function (grunt) {
 					'js/*.js'
 				],
 				options: {
-					specs: 'spec/*specs.js',
-					helpers: 'spec/*helpers.js'
+					specs: 'spec/*Specs.js',
+					helpers: 'spec/*Helpers.js'
 				}
 			}
 		}
