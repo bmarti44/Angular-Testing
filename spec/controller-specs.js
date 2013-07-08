@@ -35,9 +35,9 @@ describe('gameflash', function() {
 			ctrl = $controller('PlayerListControl', {$scope: scope});
 		}));
 		
-		it('should create "phones" model with 2 phones fetched from xhr', function() {
-			expect(scope.foo).toEqual('fasdfasdfasdfasdfoo');
-		});
+		it('checking foo property', inject(function($scope, $rootScope, $controller) {
+			expect($scope.foo).toEqual('fasdfasdfasdfasdfoo');
+		}));
 		
 	});
   
