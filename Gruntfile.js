@@ -1,9 +1,9 @@
-/**
- *	SI.com Network Bar - Gruntfile.js
- *	Author: mstills
- *		Provides build instructions for Grunt - http://gruntjs.com
- */
+/*jslint devel: false, browser: true, maxerr: 50, indent: 4*/
+/*global grunt: false, $: false, angular: false, jQuery: false, console: false, document: false, event: false, frames: false, history: false, Image: false, location: false, name: false, navigator: false, Option: false, parent: false, screen: false, setInterval: false, setTimeout: false, window: false, XMLHttpRequest: false */
+
 module.exports = function (grunt) {
+	'use strict';
+	
 	grunt.initConfig({
 		jshint: {
 			// these are the files to lint
