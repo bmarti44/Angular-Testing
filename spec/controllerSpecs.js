@@ -79,6 +79,30 @@ describe('gameflash', function() {
 			});
 		
 		});
+		
+		/**
+		 * GetDataService Unit Test
+		 * This will be the simple unit test for the GetData Service
+		 */
+		describe('GetDataService', function() {
+			var GetData;
+			
+			beforeEach(inject(function($injector, $httpBackend) {
+				GetData = $injector.get('GetData');
+			}));
+			
+			it('should call all our JSONP files', inject(function($httpBackend) {
+				
+				GetData.query().then(function(data) {
+					expect(data.length).toEqual(2);
+				});
+				
+				$httpBackend.flush();
+				
+			}));
+			
+		});
+		
 	});
   
 });
