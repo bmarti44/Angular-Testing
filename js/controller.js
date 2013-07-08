@@ -3,6 +3,7 @@
 
 angular.module('gameflash').controller('AppControl', ['$rootScope', '$scope', '$http', '$timeout', 'GetData', function ($rootScope, $scope, $http, $timeout, GetData) {
 	'use strict';
+	
 	(function tick() {
 		GetData.query().then(function(data) {
 			var result = {
