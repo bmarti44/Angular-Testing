@@ -85,7 +85,21 @@ module.exports = function (grunt) {
 		watch: {
 			javascript: {
 				files: ['!components/**/*.js', '!node_modules/**/*.js', 'js/*.js', 'css/*.css', '*.html', '!index.min.html'],
-				tasks: ['jshint', 'htmlmin', 'concat', 'min', 'cssmin', 'clean'],
+				tasks: ['jshint', 'jasmine', 'concat:scripts', 'concat:assets', 'min', 'clean'],
+				options: {
+					livereload: true
+				}
+			},
+			css: {
+				files: ['css/*.css'],
+				tasks: ['concat', 'cssmin', 'clean'],
+				options: {
+					livereload: true
+				}
+			},
+			html: {
+				files: ['*.html', '!index.min.html'],
+				tasks: ['htmlmin'],
 				options: {
 					livereload: true
 				}
@@ -124,5 +138,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');		// used for checking code quality (similar to JSLint)
 
 	// default task -> run 'grunt' -> lints script files, minifies HTML shell, replaces shell var in script, minifies JS and CSS assets for deployment
-	grunt.registerTask('default', ['jshint', 'jasmine', 'htmlmin', 'concat', 'min', 'cssmin', 'clean']);
+	grunt.registerTask('default', ['jshint', 'htmlmin', 'concat', 'min', 'cssmin', 'clean', 'jasmine']);
 };
