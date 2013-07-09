@@ -5,7 +5,8 @@ module.exports = function (grunt) {
 	'use strict';
 	
 	grunt.initConfig({
-		pkg: '<json:package.json>',
+		packageJSON: '<json:package.json>',
+		bowerJSON: '<json:bower.json>',
 		jshint: {
 			// these are the files to lint
 			all: [
@@ -77,10 +78,15 @@ module.exports = function (grunt) {
 			dev: {
 				options: {
 					findNestedDependencies: true,
-					baseUrl: 'js',
+					baseUrl: 'require',
 					name: 'gameflash',
-					mainConfigFile: 'js/config.js',
+					mainConfigFile: 'require/config.js',
 					optimize: 'uglify2',
+					paths: {
+						components: '../bower_components/**/*.min.js',
+						js: '../js/*.js'
+					},
+					preserveLicenseComments: false,
 					generateSourceMaps: true,
 					out: "pkg/app.min.js"
 				}
@@ -88,9 +94,13 @@ module.exports = function (grunt) {
 			prod: {
 				options: {
 					findNestedDependencies: true,
-					baseUrl: 'js',
+					baseUrl: 'require',
 					name: 'gameflash',
-					mainConfigFile: 'js/config.js',
+					mainConfigFile: 'require/config.js',
+					paths: {
+						components: '../bower_components/**/*.min.js',
+						js: '../js/*.js'
+					},
 					out: "pkg/app.min.js"
 				}
 			}
