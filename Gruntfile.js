@@ -73,6 +73,30 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		requirejs: {
+			dev: {
+				options: {
+					findNestedDependencies: true,
+					baseUrl: 'js',
+					name: 'gameflash',
+					mainConfigFile: 'js/config.js',
+					optimize: 'uglify2',
+					generateSourceMaps: true,
+					out: "pkg/app.min.js"
+				}
+			},
+			prod: {
+				options: {
+					findNestedDependencies: true,
+					baseUrl: 'js',
+					name: 'gameflash',
+					mainConfigFile: 'js/config.js',
+					optimize: 'uglify2',
+					generateSourceMaps: true,
+					out: "pkg/app.min.js"
+				}
+			}
+		},
 		min: {
 			js: {
 				src: 'pkg/app.concat.js',
@@ -133,6 +157,7 @@ module.exports = function (grunt) {
 	});
 
 	// Grunt tasks that this project depends on
+	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-watch');

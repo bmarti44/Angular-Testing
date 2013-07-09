@@ -11,6 +11,7 @@
     "grunt-contrib-concat": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-contrib-clean": "latest",
-    "grunt-contrib-jasmine": "latest"
+    "grunt-contrib-jasmine": "latest",
+    "grunt-contrib-requirejs": "latest"
   }
 }
