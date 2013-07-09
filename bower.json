@@ -2,6 +2,15 @@
   "name": "Angular-Testing",
   "version": "0.0.0",
   "dependencies": {
-    "sass-bootstrap": "~2.3.2"
+    "sass-bootstrap": "latest",
+    "angular": "latest",
+    "angular-resource": "latest",
+    "json3": "latest",
+    "jquery": "latest",
+    "requirejs": "latest"
+  },
+  "devDependencies": {
+  	"angular-mocks": "latest",
+  	"jquery-migrate": "latest"
   }
 }
