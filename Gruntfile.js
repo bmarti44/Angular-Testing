@@ -44,11 +44,11 @@ module.exports = function (grunt) {
 			},
 			assets: {
 				src: [
-					'components/jquery/jquery.min.js',
-					'components/jquery/jquery-migrate.min.js',
-					'components/angular/angular.min.js',
-					'components/angular-resource/angular-resource.min.js',
-					'components/**/*.min.js'
+					'bower_components/jquery/jquery.min.js',
+					'bower_components/jquery/jquery-migrate.min.js',
+					'bower_components/angular/angular.min.js',
+					'bower_components/angular-resource/angular-resource.min.js',
+					'bower_components/**/*.min.js'
 				],
 				dest: 'pkg/assets.js'
 			},
@@ -91,8 +91,6 @@ module.exports = function (grunt) {
 					baseUrl: 'js',
 					name: 'gameflash',
 					mainConfigFile: 'js/config.js',
-					optimize: 'uglify2',
-					generateSourceMaps: true,
 					out: "pkg/app.min.js"
 				}
 			}
@@ -140,12 +138,12 @@ module.exports = function (grunt) {
 		jasmine: {
 			gameflash: {
 				src: [
-					'components/jquery/jquery.min.js',
-					'components/jquery/jquery-migrate.min.js',
-					'components/angular/angular.min.js',
-					'components/angular-resource/angular-resource.min.js',
-					'components/angular-mocks/angular-mocks.js',
-					'components/**/*.min.js',
+					'bower_components/jquery/jquery.min.js',
+					'bower_components/jquery/jquery-migrate.min.js',
+					'bower_components/angular/angular.min.js',
+					'bower_components/angular-resource/angular-resource.min.js',
+					'bower_components/angular-mocks/angular-mocks.js',
+					'bower_components/**/*.min.js',
 					'pkg/app.min.js'
 				],
 				options: {
